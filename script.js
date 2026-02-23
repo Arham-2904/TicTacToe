@@ -44,6 +44,7 @@ const Player = (name, marker) => {
 };
 
 const Controller = (() => {
+    let gameRunning = true;
     const player1 = Player("player1", "O");
     const player2 = Player("player2", "X");
 
@@ -59,10 +60,36 @@ const Controller = (() => {
     }
 
     const play = (i) => {
-        gameBoard.placeMark(i, turn.marker);
-        console.log(`${turn.name} plays at index ${i}`);
-        switchTurns();
+        if(gameRunning){
+            const board = gameBoard.getBoard();
+            if(board[i] === ''){
+                gameBoard.placeMark(i, turn.marker);
+                DisplayGame.render();
+                console.log(`${turn.name} plays at index ${i}`);
+                let won = gameBoard.gameWon();
+                if(won){
+                    console.log(`${turn.name} has won the game`);
+                    gameRunning = false;
+                }
+                if(!won){
+                    switchTurns();
+                }
+                if(!board.includes('') && !won){
+                    console.log("It's a draw");
+                    gameRunning = false;
+                }
+            }
+        }
     }
 
     return {player1, player2, switchTurns, play};
+})();
+
+const DisplayGame = (() => {
+    const render = () => {
+        const board = gameBoard.getBoard();
+        console.log(board);
+    }
+
+    return {render};
 })();
