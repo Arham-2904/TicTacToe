@@ -1,3 +1,8 @@
+@font-face{
+    font-family: Cause;
+    src: url(Cause-VariableFont_wght.ttf);
+}
+
 body{
     background-color: #FBF3B9;
 }
@@ -17,4 +22,11 @@ body{
 .box{
     height: 100px;
     border: 2px solid #B7B1F2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+    font-family: Cause;
+    color: #FDB7EA;
 }

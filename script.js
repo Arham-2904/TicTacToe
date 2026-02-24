@@ -68,14 +68,14 @@ const Controller = (() => {
                 console.log(`${turn.name} plays at index ${i}`);
                 let won = gameBoard.gameWon();
                 if(won){
-                    console.log(`${turn.name} has won the game`);
+                    DisplayGame.result("won", turn.name);
                     gameRunning = false;
                 }
                 if(!won){
                     switchTurns();
                 }
                 if(!board.includes('') && !won){
-                    console.log("It's a draw");
+                    DisplayGame.result("draw", turn.name);
                     gameRunning = false;
                 }
             }
@@ -88,8 +88,33 @@ const Controller = (() => {
 const DisplayGame = (() => {
     const render = () => {
         const board = gameBoard.getBoard();
-        console.log(board);
+        const boxes = document.getElementsByClassName("box");
+        
+        for(let i = 0; i <= 8; i++){
+            boxes[i].textContent = board[i];
+        }
     }
 
-    return {render};
+    const click = () => {
+        const boxes = document.getElementsByClassName("box");
+        for(let i = 0; i <= 8; i++){
+            boxes[i].addEventListener("click", function(){
+                Controller.play(i);
+            })
+        }
+    }
+
+    const result = (message, player) => {
+        const outcome = document.getElementById("result");
+        if(message === 'won'){
+            outcome.textContent = `${player} has won the game`;
+        }
+        if(message === 'draw'){
+            outcome.textContent = "It's a draw";
+        }
+    }
+
+    return {render, click, result};
 })();
+
+DisplayGame.click();
