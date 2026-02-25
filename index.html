@@ -7,10 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="container">
-        <div id="result"></div>
 
+    <div class="container">
+
+        <div class="entername">
+            <div class="name-field">
+                <p>Enter name for player 1</p>
+                <input type="text" id="player1">
+            </div>
+
+            <div class="name-field">
+                <p>Enter name for player 2</p>
+                <input type="text" id="player2">
+            </div>
+        </div>
+
+        <button id="start">
+            Start
+        </button>
+        
         <div class="grid">
             <div class="box"></div>
             <div class="box"></div>
@@ -21,10 +36,12 @@
             <div class="box"></div>
             <div class="box"></div>
             <div class="box"></div>
-        </div>
-    </div>
 
-    <div id="result"></div>
+            <div id="win-line"></div>
+        </div>
+
+        <div id="result"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
