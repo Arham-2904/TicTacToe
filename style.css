@@ -77,14 +77,3 @@ button{
     color: #44444E;
     font-size: 20px;
 }
-
-#win-line{
-    position: absolute;
-    width: 300px;
-    height: 5px;
-    background-color: #FDB7EA;
-    top: 50%;
-    left: 0%;
-    transform: scaleX(0);
-    transform-origin: left;
-}
